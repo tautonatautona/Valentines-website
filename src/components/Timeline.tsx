@@ -14,20 +14,20 @@ const timelineEvents: TimelineEvent[] = [
   {
     date: 'February 1, 2026',
     title: 'First Sushi Date',
-    description: 'The beginning of something beautiful over delicious sushi',
+    description: 'The beginning of something beautiful over delicious sushi 🍣',
     icon: '🍣',
   },
   {
     date: 'February 14, 2026',
     title: 'First Valentine\'s Day',
-    description: 'Our first Valentine\'s Day together, celebrating our love!',
+    description: 'Our first Valentine\'s Day together, celebrate our love! 💕',
     icon: '💕',
   },
   {
     date: 'March and Forever',
     title: 'Growing Together',
-    description: 'Every day with you will always feel like a gift ',
-    icon: '💖',
+    description: 'Every day with you feels like a gift 🎁',
+    icon: '🌸',
   },
 ];
 
@@ -85,9 +85,6 @@ export default function Timeline() {
                 duration: 2,
                 repeat: Infinity,
                 ease: 'easeInOut',
-              },
-              hover: {
-                duration: 0.3,
               }
             }}
           >
@@ -229,23 +226,7 @@ export default function Timeline() {
                   type: 'spring',
                   stiffness: 200,
                 }}
-                whileHover={{ scale: 1.3, rotate: 180 }}
-                animate={{
-                  boxShadow: [
-                    '0 0 0 0 rgba(244, 63, 94, 0.4)',
-                    '0 0 0 10px rgba(244, 63, 94, 0)',
-                    '0 0 0 0 rgba(244, 63, 94, 0)',
-                  ],
-                }}
-                transition={{
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                  },
-                  hover: {
-                    duration: 0.4,
-                  }
-                }}
+                whileHover={{ scale: 1.3, rotate: 180, transition: { duration: 0.4 } }}
               >
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
@@ -286,13 +267,8 @@ export default function Timeline() {
                 ],
               }}
               transition={{
-                boxShadow: {
-                  duration: 2,
-                  repeat: Infinity,
-                },
-                hover: {
-                  duration: 0.3,
-                }
+                duration: 2,
+                repeat: Infinity,
               }}
             >
               <motion.div

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 interface FloatingHeart {
   id: number;
@@ -11,24 +12,25 @@ interface FloatingHeart {
   duration: number;
 }
 
-const floatingHearts: FloatingHeart[] = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  x: Math.random() * 100,
-  size: Math.random() * 20 + 10,
-  delay: Math.random() * 3,
-  duration: Math.random() * 3 + 4,
-}));
-
-// Get window height safely (handles SSR)
-const getWindowHeight = (): number => {
-  if (typeof window !== 'undefined') {
-    return window.innerHeight;
-  }
-  return 800; // Default SSR value
-};
-
 export default function Hero() {
-  const windowHeight = getWindowHeight();
+  const [windowHeight, setWindowHeight] = useState(800);
+  const [floatingHearts, setFloatingHearts] = useState<FloatingHeart[]>([]);
+
+  useEffect(() => {
+    // Set window height
+    setWindowHeight(window.innerHeight);
+
+    // Generate floating hearts on client side to avoid hydration mismatch
+    setFloatingHearts(
+      Array.from({ length: 20 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        size: Math.random() * 20 + 10,
+        delay: Math.random() * 3,
+        duration: Math.random() * 3 + 4,
+      }))
+    );
+  }, []);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Floating Hearts Background */}
@@ -91,12 +93,13 @@ export default function Hero() {
         />
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 text-center px-4">
+      {/* Main Content - Perfectly Centered */}
+      <div className="relative z-10 text-center px-4 w-full flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
+          className="flex flex-col items-center"
         >
           {/* Animated Heart Icon */}
           <motion.div
@@ -176,41 +179,40 @@ export default function Hero() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-xl md:text-2xl text-rose-600 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-rose-600 max-w-2xl mx-auto text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
           >
             My love for you grows more beautiful every day ❤️
           </motion.p>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            className="mt-16 flex justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8 }}
-          >
-            <motion.div
-              className="flex flex-col items-center gap-2 text-rose-500"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <span className="text-sm tracking-widest">SCROLL TO</span>
-              <motion.div
-                className="w-6 h-10 border-2 border-rose-400 rounded-full flex justify-center pt-2"
-              >
-                <motion.div
-                  className="w-1.5 h-1.5 bg-rose-500 rounded-full"
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </motion.div>
-            </motion.div>
-          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll Indicator - Positioned at Bottom */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8 }}
+      >
+        <motion.div
+          className="flex flex-col items-center gap-2 text-rose-500"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="text-sm tracking-widest">SCROLL TO</span>
+          <motion.div
+            className="w-6 h-10 border-2 border-rose-400 rounded-full flex justify-center pt-2"
+          >
+            <motion.div
+              className="w-1.5 h-1.5 bg-rose-500 rounded-full"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
-

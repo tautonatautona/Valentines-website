@@ -17,7 +17,7 @@ export default function Home() {
       <Gallery />
       <Letter />
       <Reasons />
-      <Poetry />
+      {/* <Poetry /> */}
       {/* <Dreams /> */}
       <Footer />
     </main>

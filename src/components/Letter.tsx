@@ -14,14 +14,14 @@ export default function Letter() {
   };
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden">
+    <section className="min-h-screen py-24 px-4 relative overflow-hidden flex items-center justify-center">
       {/* Background Decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-rose-100/50 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-100/50 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Section Title */}
         <motion.div
           className="text-center mb-16"
@@ -137,37 +137,43 @@ export default function Letter() {
 
                       {/* Greeting */}
                       <div className="text-center">
-                        <p className="text-2xl font-serif text-rose-800 italic">
+                        <p className="text-3xl font-serif text-rose-800 italic font-semibold">
                           My Dearest Baone,
+                        </p>
+                        <p className="text-sm text-rose-400 mt-2">
+                          The one who makes my heart smile 💕
                         </p>
                       </div>
 
                       {/* Body */}
-                      <div className="space-y-4 text-rose-700 leading-relaxed font-serif">
+                      <div className="space-y-4 text-rose-700 leading-relaxed font-serif text-base">
                         <p>
-                          On this special Valentine's Day, I want to take a moment to tell you
-                          just how much you mean to me. Every day with you feels like a beautiful
-                          adventure, and I am so grateful to have you in my life.
+                          On this special Valentine's Day, I want to tell you just how much you mean to me. 
+                          Every moment with you feels like a beautiful dream, and I am so grateful to have 
+                          you in my life.
                         </p>
                         <p>
-                          From our first sushi date to all the moments we've shared, you have
-                          brought so much joy, laughter, and love into my world. Your smile
-                          brightens my day, your kindness touches my heart, and your love
-                          makes me a better person.
+                          From our first sushi date on February 1st to celebrating this Valentine's Day together, 
+                          you have filled my world with joy, laughter, and love. Your smile brightens my darkest 
+                          days, your kindness touches my soul, and your love makes me want to be a better person 
+                          every single day.
                         </p>
                         <p>
-                          I promise to love you, support you, and be there for you through
-                          all of life's adventures. You are my best friend, my soulmate,
-                          and my greatest love.
+                          I promise to cherish you, support you, and stand by your side through all of life's 
+                          adventures. You are my best friend, my confidant, my inspiration, and the love of my life.
                         </p>
                         <p>
-                          Thank you for being you - the most amazing, beautiful, and caring
-                          person I know. I love you more than words can express!
+                          Thank you for being exactly who you are - the most amazing, beautiful, and incredible 
+                          person I know. My love for you grows stronger with each passing day, and I can't wait 
+                          to create a lifetime of beautiful memories together.
+                        </p>
+                        <p className="text-center italic font-semibold text-rose-600">
+                          You are my everything, Baone. Happy Valentine's Day! 💕
                         </p>
                       </div>
 
                       {/* Closing */}
-                      <div className="text-center space-y-4 pt-4">
+                      <div className="text-center space-y-4 pt-6">
                         <motion.div
                           className="text-rose-400"
                           animate={{ opacity: [0.5, 1, 0.5] }}
@@ -176,10 +182,13 @@ export default function Letter() {
                           <Heart size={24} fill="#fda4af" className="mx-auto" />
                         </motion.div>
                         <p className="text-xl font-serif text-rose-800 italic">
-                          Forever yours,
+                          Forever and always yours,
                         </p>
-                        <p className="text-lg font-bold text-rose-600">
-                          With all my love ❤️
+                        <p className="text-2xl font-serif font-bold text-rose-600">
+                          Your Valentine 💕
+                        </p>
+                        <p className="text-sm text-rose-400 italic">
+                          With all my love, today and every day ❤️
                         </p>
                       </div>
 
@@ -213,4 +222,3 @@ export default function Letter() {
     </section>
   );
 }
-

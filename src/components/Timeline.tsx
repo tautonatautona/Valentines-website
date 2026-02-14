@@ -15,16 +15,19 @@ const timelineEvents: TimelineEvent[] = [
     date: 'February 1, 2026',
     title: 'First Sushi Date',
     description: 'The beginning of something beautiful over delicious sushi',
+    icon: '🍣',
   },
   {
     date: 'February 14, 2026',
     title: 'First Valentine\'s Day',
     description: 'Our first Valentine\'s Day together, celebrating our love!',
+    icon: '💕',
   },
   {
     date: 'March and Forever',
     title: 'Growing Together',
     description: 'Every day with you will always feel like a gift ',
+    icon: '💖',
   },
 ];
 

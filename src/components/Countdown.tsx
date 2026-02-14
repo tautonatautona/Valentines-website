@@ -172,6 +172,7 @@ export default function Countdown() {
                     scale: 1.08, 
                     y: -8,
                     boxShadow: '0 20px 50px rgba(244, 63, 94, 0.3)',
+                    transition: { duration: 0.3 },
                   }}
                   animate={{
                     boxShadow: [
@@ -182,7 +183,6 @@ export default function Countdown() {
                   }}
                   transition={{ 
                     boxShadow: { duration: 2.5, repeat: Infinity },
-                    hover: { duration: 0.3 },
                   }}
                 >
                   {/* Shimmer effect */}
